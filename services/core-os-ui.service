@@ -10,10 +10,8 @@ User=core
 TimeoutStartSec=0
 ExecStartPre=-/usr/bin/docker kill coreos-ui
 ExecStartPre=-/usr/bin/docker rm coreos-ui
-ExecStartPre=/usr/bin/docker pull speakit/coreos-ui
+ExecStartPre=/usr/bin/docker pull speakit/coreos-ui:latest
 ExecStart=/usr/bin/docker run --name coreos-ui \
       -p 3000:3000 \
-      -e FLEET_BINARY=/usr/bin/fleetctl \
-      -e FLEET_ENDPOINT=http://172.17.42.1:4001 \
-      speakit/coreos-ui
+      speakit/coreos-ui:latest
 ExecStop=/usr/bin/docker stop coreos-ui
