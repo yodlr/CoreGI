@@ -1,0 +1,31 @@
+
+<div class="container">
+  <div class="coreos-ui-box" ng-controller="UnitFilesCtrl">
+    <div class="coreos-ui-box-header">
+      <div class="coreos-ui-box-header-title">Unit Files List</div>
+      <div class="coreos-ui-box-header-sub">Total: {{unitFilesList.length}}</div>
+    </div>
+    <div class="coreos-ui-box-content">
+      <table class="table coreos-ui-table">
+        <tr class="coreos-ui-box-content-title">
+          <th>Unit</th>
+          <th>Hash</th>
+          <th>DState</th>
+          <th>State</th>
+          <!--<th>Target</th>       
+          <th>Machine ID</th>
+          <th>Machine IP</th>-->
+        </tr>
+        <tr ng-repeat="unitFile in unitFilesList">
+          <td>{{unitFile.unit}}</td>
+          <td>{{unitFile.hash}}</td>
+          <td>{{unitFile.dState}}</td>
+          <td>{{unitFile.state}}</td>
+          <!--<td>{{unitFile.target}}</td>
+          <td>{{unitFile.machineId}}</td>
+          <td>{{unitFile.machineIp}}</td>-->
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="coreosApp">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{title}}</title>
+
+    <!-- CSS -->
+    <link href="vendors/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+  </head>
+  <body>
+
+    <nav class="navbar navbar-default navbar-fixed-top coreos-ui-nav" role="navigation" ng-controller="NavbarCtrl">
+      <div class="container">
+
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#coreos-ui-navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#/">
+            <img src="img/speakit_logo.png" height="30px">
+          </a>
+        </div>
+
+        <div class="collapse navbar-collapse coreos-nav-collapse" id="coreos-ui-navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li ng-class="{active: isActive('machines')}"><a href="#machines" data-category="Main Navigation" data-event="Machines">Machines</a></li>
+            <li ng-class="{active: isActive('units')}"><a href="#units" data-category="Main Navigation" data-event="Units">Units</a></li>
+            <li ng-class="{active: isActive('unit_files')}"><a href="#unit_files" data-category="Main Navigation" data-event="Unit Files">Unit Files</a></li>
+          </ul>
+        </div>
+
+      </div>
+    </nav>
+
+    <div ng-view></div>
+
+    <!-- JS -->
+    <script src="vendors/js/jquery.min.js"></script>
+    <script src="vendors/js/bootstrap.min.js"></script>
+    <script src="vendors/js/angular.min.js"></script>
+    <script src="vendors/js/angular-resource.min.js"></script>
+    <script src="vendors/js/angular-route.min.js"></script>
+    <script src="js/coreos-ui-app.js"></script>
+    <script src="js/coreos-ui-services.js"></script>
+    <script src="js/coreos-ui-controllers.js"></script>
+  </body>
+</html>

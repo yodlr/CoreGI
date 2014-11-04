@@ -1,0 +1,72 @@
+body {
+  background: linear-gradient(30deg,#2276ad,#6ec654) no-repeat left top fixed;
+  background-color: #2277ad;
+  background-size: auto,100% 100%;
+  font-family: "Source Sans Pro",sans-serif;
+  padding-top: 50px;
+}
+
+/* Navbar */
+.navbar {
+  border: 0;
+}
+.navbar-default .navbar-nav>li>a {
+  color: #428bca;
+}
+.navbar-default .navbar-nav>li>a:hover {
+  color: #f04c5c;
+}
+.navbar-default .navbar-nav>.active>a {
+  color: #f04c5c;
+}
+.coreos-ui-nav,.coreos-ui-subnav {
+  background: #fff;
+  box-shadow: 0 0 5px rgba(150,150,150,0.75);
+  font-weight: 400;
+  font-size: 18px;
+}
+.coreos-ui-nav .navbar-brand,.coreos-ui-subnav .navbar-brand {
+  padding: 10px 5px 10px 5px;
+}
+
+/* Table */
+.coreos-ui-table, .table>tbody>tr>th {
+  border-top: 0;
+  line-height: 1.5;
+  padding: 8px;
+}
+.coreos-ui-table th {
+  border-top: 0;
+  font-weight: normal;
+}
+
+/* Content Box */
+.coreos-ui-box {
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(150,150,150,0.75);
+  color: #333;
+  color: rgba(0,0,0,0.75);
+  font-weight: 400;
+  font-size: 16px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  padding: 30px;
+}
+.coreos-ui-box-header {
+  font-size: 20px;
+  min-height: 50px;
+  padding-bottom: 20px;
+}
+.coreos-ui-box-header-title {
+
+}
+.coreos-ui-box-header-sub {
+  color: #999;
+  font-size: 14px;
+}
+.coreos-ui-box-content {
+
+}
+.coreos-ui-box-content-title {
+  color: #999;
+}

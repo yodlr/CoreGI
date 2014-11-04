@@ -1,0 +1,23 @@
+
+<div class="container">
+  <div class="coreos-ui-box" ng-controller="MachinesCtrl">
+    <div class="coreos-ui-box-header">
+      <div class="coreos-ui-box-header-title">Machines List</div>
+      <div class="coreos-ui-box-header-sub">Total: {{machinesList.length}}</div>
+    </div>
+    <div class="coreos-ui-box-content">
+      <table class="table coreos-ui-table">
+        <tr class="coreos-ui-box-content-title">
+          <th>Machine ID</th>
+          <th>Machine IP</th>
+          <th>Meta Data</th>
+        </tr>
+        <tr ng-repeat="machine in machinesList">
+          <td>{{machine.machine}}</td>
+          <td>{{machine.ip}}</td>
+          <td>{{machine.metadata}}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

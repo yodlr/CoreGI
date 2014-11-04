@@ -1,0 +1,35 @@
+{
+  "name": "CoreOS-UI",
+  "version": "0.0.1",
+  "description": "WebUI for monitoring CoreOS clusters including fleet and etcd",
+  "main": "app.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/astilabs/CoreOS-UI.git"
+  },
+  "author": "Jared De La Cruz",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/astilabs/CoreOS-UI/issues"
+  },
+  "homepage": "https://github.com/astilabs/CoreOS-UI",
+  "dependencies": {
+    "async": "^0.9.0",
+    "body-parser": "^1.9.0",
+    "cookie-parser": "^1.3.3",
+    "cron": "^1.0.5",
+    "express": "^4.9.8",
+    "fleetctl": "^1.0.0",
+    "hbs": "^2.7.0",
+    "memory-cache": "0.0.5",
+    "serve-favicon": "^2.1.6"
+  },
+  "devDependencies": {
+    "bower": "^1.3.12",
+    "gulp": "^3.8.8"
+  }
+}

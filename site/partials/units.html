@@ -1,0 +1,27 @@
+
+<div class="container">
+  <div class="coreos-ui-box" ng-controller="UnitsCtrl">
+    <div class="coreos-ui-box-header">
+      <div class="coreos-ui-box-header-title">Units List</div>
+      <div class="coreos-ui-box-header-sub">Total: {{unitsList.length}}</div>
+    </div>
+    <div class="coreos-ui-box-content">
+      <table class="table coreos-ui-table">
+        <tr class="coreos-ui-box-content-title">
+          <th>Unit</th>
+          <th>Active</th>
+          <th>Sub</th>
+          <th>Machine ID</th>
+          <th>Machine IP</th>
+        </tr>
+        <tr ng-repeat="unit in unitsList">
+          <td>{{unit.unit}}</td>
+          <td>{{unit.active}}</td>
+          <td>{{unit.sub}}</td>
+          <td>{{unit.machineId}}</td>
+          <td>{{unit.machineIp}}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

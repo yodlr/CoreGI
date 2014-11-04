@@ -1,0 +1,28 @@
+{
+  "name": "CoreOS-UI",
+  "version": "0.0.1",
+  "homepage": "https://github.com/astilabs/CoreOS-UI",
+  "authors": [
+    "Jared De La Cruz <jared@labs.asti-usa.com>"
+  ],
+  "description": "WebUI for monitoring CoreOS clusters including fleet and etcd",
+  "moduleType": [
+    "node"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.3.0",
+    "angular-resource": "~1.3.0",
+    "angular-route": "~1.3.0",
+    "bootstrap": "~3.2.0",
+    "jquery": "~1.11.1"
+  }
+}
