@@ -2,10 +2,10 @@ FROM speakit/nodejs
 
 MAINTAINER Jared De La Cruz <jared@speakit.io>
 
-RUN apt-get update
-RUN apt-get install -y wget ca-certificates build-essential
+RUN apt-get -qq update
+RUN apt-get install -yqq wget ca-certificates build-essential
 
-RUN apt-get install -y git mercurial
+RUN apt-get install -yqq git mercurial
 
 # Install go
 ENV PATH $PATH:/usr/local/go/bin
