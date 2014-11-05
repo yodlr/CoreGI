@@ -3,6 +3,8 @@ CoreGI
 
 WebUI for monitoring CoreOS clusters including fleet and etcd
 
+![CoreGI](https://raw.githubusercontent.com/astilabs/CoreGI/master/site/img/coregi_logo.png)
+
 ### What is CoreGI
 
 CoreGI came out of our need for a one-stop dashboard for viewing the status of the applications running in our CoreOS clusters, monitoring etcd keys, and managing rolling software updates. We're pro cli-tools, but have found that simple web-apps provide improved visibility into complex systems.
@@ -20,7 +22,8 @@ $ fleetctl submit services/coregi.service
 $ fleetctl start coregi.service
 ```
 
-CoreGI will listen on port 3000 by default. This can be modified in the CoreOS service file by using `-p` flag, see [service file][coregi_service].
+CoreGI will listen on port 3000 by default.
+This can be modified in the CoreOS service file by using `-p` flag, see [service file][coregi_service].
 
 ##### Docker
 
@@ -45,7 +48,7 @@ CoreGI default options.
 //fleetctl options
 fleetctl: {
   binary: process.env.FLEET_BINARY || '/usr/bin/fleetctl', //Location of the binary file for fleetctl
-  endpoint: process.env.FLEET_ENDPOINT || 'http://172.17.42.1:4001' //URL for Etcd
+  endpoint: process.env.FLEET_ENDPOINT || 'http://172.17.42.1:4001' //URL for etcd
 }
 
 //express listen port
