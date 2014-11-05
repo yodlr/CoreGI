@@ -1,29 +1,61 @@
-CoreOS-UI
+CoreGI
 =========
 
 WebUI for monitoring CoreOS clusters including fleet and etcd
 
+### What is CoreGI
 
-CoreOs UI is an open source dashboard that gives insight into your CoreOS cluster. It is easy to install and can run as a standalone application or run in a docker container in your CoreOS cluster. Currently it only supports a few fleet features, with plans to add new features including etcd. CoreOS UI currently supports the [following](#current-features) features.
+CoreGI came out of our need for a one-stop dashboard for viewing the status of the applications running in our CoreOS clusters, monitoring etcd keys, and managing rolling software updates. We're pro cli-tools, but have found that simple web-apps provide improved visibility into complex systems.
 
-#### Getting Started
+### CoreGI runs in CoreOS
 
-For an example service file, see `services/core-os-ui.service` or use the following command: 
+CoreGI is created to be as simple as possible and deploying CoreGI is as easy as running a docker container. CoreGI can also be installed into a __CoreOS cluster__ using a CoreOS service file. Take a look at our CoreOS [service file][coregi_service] for an example. CoreGI can also be ran as an application using Node.js by using environment variables to change the default options, see [Getting Started](#getting-started).
 
-`docker run --name coreos-ui -p 3000:3000 -e FLEET_BINARY=/usr/bin/fleetctl -e FLEET_ENDPOINT=http://172.17.42.1:4001 speakit/coreos-ui`
+### Getting Started
 
-`FLEET_BINARY`: Location of the binary file for fleet  
-`FLEET_ENDPOINT`: URL for Etcd
+##### CoreOS
 
-#### Current Features
+```
+$ fleetctl submit services/coregi.service
+$ fleetctl start coregi.service
+```
 
-Fleet
+CoreGI will listen on port 3000 by default. This can be modified in the CoreOS service file by using `-p` flag, see [service file][coregi_service].
 
-* Machines
-* Units
-* Unit Files
+##### Docker
 
-REST
+```
+$ docker run --name coregi -p 3000:3000 speakit/coregi:latest
+```
+
+##### Node.js
+
+To change default options, set the environment variables, see [options](#coregi-options).
+Example with custom option:
+
+```
+$ FLEET_BINARY=/usr/local/bin/fleetctl npm start
+```
+
+### CoreGI Options
+
+CoreGI default options.
+
+```javascript
+//fleetctl options
+fleetctl: {
+  binary: process.env.FLEET_BINARY || '/usr/bin/fleetctl', //Location of the binary file for fleetctl
+  endpoint: process.env.FLEET_ENDPOINT || 'http://172.17.42.1:4001' //URL for Etcd
+}
+
+//express listen port
+app.set('port', process.env.PORT || 3000);
+```
+
+### CoreGI Features
+
+CoreGI currently supports querying Fleet for listing of __machines__, __units__, and __unit-files__.
+CoreGI also exposes a __REST API__ with the following endpoints:
 
 * http://<'dockerhost'>/api/machines
 * http://<'dockerhost'>/api/units
@@ -31,27 +63,18 @@ REST
 
 #### Upcoming Features
 
-Etcd
+Some of the soon to come features include: __unit logs__, __unit status__, __start/stop/load/unload/submit/destroy unit files__, and adding __etcd__ key monitoring (and eventually __create/edit/delete__).
+CoreGI will also be adding features to do __rolling deployment of services__.
 
-* GET
-* POST
-* DEL
 
-Fleet
-
-* Destroy
-* Load
-* Start
-* Status
-* Stop
-* Submit
-* Unload
-
-Built with:
+#### GoreGI is built with:
 
 * [Node.js](http://nodejs.org/)
 * [AngularJS](https://angularjs.org/)
 * [Bootstrap](http://getbootstrap.com/)
 * [Docker](https://www.docker.com/)
 
+
+
+[coregi_service]: https://github.com/astilabs/CoreGI/blob/master/services/coregi.service
 

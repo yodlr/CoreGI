@@ -14,10 +14,13 @@ body {
   color: #428bca;
 }
 .navbar-default .navbar-nav>li>a:hover {
-  color: #f04c5c;
+  color: #ff6600;
 }
 .navbar-default .navbar-nav>.active>a {
-  color: #f04c5c;
+  color: #ff6600;
+}
+.navbar-default .navbar-nav>.active>a:hover {
+  color: #ff4400;
 }
 .coreos-ui-nav,.coreos-ui-subnav {
   background: #fff;

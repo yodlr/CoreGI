@@ -3,7 +3,7 @@ var express = require('express');
 var router = express.Router();
 
 router.get('/', function(req, res) {
-  res.render('index', {title: 'CoreOS UI'});
+  res.render('index', {title: 'CoreGI'});
 });
 
 router.get('/api', function(req, res) {

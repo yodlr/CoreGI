@@ -29,7 +29,7 @@ coreosui.init = function init(config, callback) {
   ui.app.set('view engine', 'html');
   ui.app.engine('html', require('hbs').__express);
 
-  //app.use(favicon(__dirname + '/site/favicon.ico'));
+  ui.app.use(favicon(__dirname + '/site/img/favicon.ico'));
   ui.app.use(bodyParser.json());
   ui.app.use(bodyParser.urlencoded({extended: true}));
   ui.app.use(cookieParser());
