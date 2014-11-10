@@ -26,6 +26,7 @@
     "fleetctl": "^1.0.0",
     "hbs": "^2.7.0",
     "memory-cache": "0.0.5",
+    "node-etcd": "^3.0.2",
     "serve-favicon": "^2.1.6"
   },
   "devDependencies": {

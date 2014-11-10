@@ -1,6 +1,6 @@
-var coreos = angular.module('coreosApp', ['ngRoute', 'coreosControllers', 'coreosServices']);
+var coregi = angular.module('coregiApp', ['ngRoute', 'coregiControllers', 'coregiServices']);
 
-coreos.config(['$routeProvider', '$locationProvider',
+coregi.config(['$routeProvider', '$locationProvider',
 function($routeProvider, $locationProvider) {
 
   $routeProvider

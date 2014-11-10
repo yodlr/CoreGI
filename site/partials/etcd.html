@@ -1,0 +1,23 @@
+
+<div class="container">
+  <div class="coregi-box" ng-controller="EtcdCtrl">
+    <div class="coregi-box-header">
+      <div class="coregi-box-header-title">Etcd List</div>
+      <div class="coregi-box-header-sub">Total: {{keysList.length}}</div>
+    </div>
+    <div class="coregi-box-content">
+      <table class="table coregi-table">
+        <tr class="coregi-box-content-title">
+          <th>Key</th>
+          <th>Directory</th>
+          <th>Value</th>
+        </tr>
+        <tr ng-repeat="key in keysList">
+          <td>{{key.key}}</td>
+          <td>{{key.dir}}</td>
+          <td>{{key.value}}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

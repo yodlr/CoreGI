@@ -29,4 +29,9 @@ router.get('/api/unitFiles', function(req, res) {
   res.json(unitFiles);
 });
 
+router.get('/api/keys', function(req, res) {
+  var keys = cache.get('keys') || [];
+  res.json(keys);
+});
+
 module.exports = router;

@@ -22,29 +22,29 @@ body {
 .navbar-default .navbar-nav>.active>a:hover {
   color: #ff4400;
 }
-.coreos-ui-nav,.coreos-ui-subnav {
+.coregi-nav,.coregi-subnav {
   background: #fff;
   box-shadow: 0 0 5px rgba(150,150,150,0.75);
   font-weight: 400;
   font-size: 18px;
 }
-.coreos-ui-nav .navbar-brand,.coreos-ui-subnav .navbar-brand {
+.coregi-nav .navbar-brand,.coregi-subnav .navbar-brand {
   padding: 10px 5px 10px 5px;
 }
 
 /* Table */
-.coreos-ui-table, .table>tbody>tr>th {
+.coregi-table, .table>tbody>tr>th {
   border-top: 0;
   line-height: 1.5;
   padding: 8px;
 }
-.coreos-ui-table th {
+.coregi-table th {
   border-top: 0;
   font-weight: normal;
 }
 
 /* Content Box */
-.coreos-ui-box {
+.coregi-box {
   background-color: #fff;
   box-shadow: 0 0 10px rgba(150,150,150,0.75);
   color: #333;
@@ -55,21 +55,21 @@ body {
   margin-bottom: 50px;
   padding: 30px;
 }
-.coreos-ui-box-header {
+.coregi-box-header {
   font-size: 20px;
   min-height: 50px;
   padding-bottom: 20px;
 }
-.coreos-ui-box-header-title {
+.coregi-box-header-title {
 
 }
-.coreos-ui-box-header-sub {
+.coregi-box-header-sub {
   color: #999;
   font-size: 14px;
 }
-.coreos-ui-box-content {
+.coregi-box-content {
 
 }
-.coreos-ui-box-content-title {
+.coregi-box-content-title {
   color: #999;
 }

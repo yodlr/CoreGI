@@ -1,25 +1,30 @@
-var service = angular.module('coreosServices', ['ngResource']);
+var service = angular.module('coregiServices', ['ngResource']);
 
-service.factory('coreosService', ['$rootScope', '$resource', '$timeout',
+service.factory('coregiService', ['$rootScope', '$resource', '$timeout',
   function($rootScope, $resource, $timeout) {
 
     // $resource endpoints
     var machinesService = $resource('/api/machines/:machine', {}, {
-      get: {method:'GET', isArray: true}
+      get: {method: 'GET', isArray: true}
     });
 
     var unitsService = $resource('/api/units/:unit', {}, {
-      get: {method:'GET', isArray: true}
+      get: {method: 'GET', isArray: true}
     });
 
     var unitFilesService = $resource('/api/unitFiles/:unitFile', {}, {
-      get: {method:'GET', isArray: true}
+      get: {method: 'GET', isArray: true}
+    });
+
+    var keysService = $resource('/api/keys/:key', {}, {
+      get: {method: 'GET', isArray: true}
     });
 
     // vars
     var machinesList = [];
     var unitsList = [];
     var unitFilesList = [];
+    var keysList = [];
 
     // refresh data
     var refreshMachines = function refreshMachines() {
@@ -46,6 +51,14 @@ service.factory('coreosService', ['$rootScope', '$resource', '$timeout',
     };
     refreshUnitFiles();
 
+    var refreshKeys = function refreshKeys() {
+      keysService.query(function(data) {
+        angular.copy(data, keysList);
+      });
+      $timeout(refreshKeys, 3000);
+    };
+    refreshKeys();
+
     // exports
     return {
       getMachinesList: function getMachinesList() {
@@ -56,6 +69,9 @@ service.factory('coreosService', ['$rootScope', '$resource', '$timeout',
       },
       getUnitFilesList: function getUnitFilesList() {
         return unitFilesList;
+      },
+      getKeysList: function getKeysList() {
+        return keysList;
       }
     };
   }

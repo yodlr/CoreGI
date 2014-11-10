@@ -2,22 +2,23 @@ var async = require('async');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var express = require('express');
+var etcd = require('./lib/etcd');
 var fleetctl = require('./lib/fleetctl');
 var favicon = require('serve-favicon');
 var http = require('http');
 var path = require('path');
 var routes = require('./routes');
 
-var coreosui = module.exports = {};
+var coregi = module.exports = {};
   
-coreosui.init = function init(config, callback) {
+coregi.init = function init(config, callback) {
   var ui = this;
 
   if(!config) {
-    callback(new Error('Cannot initialize CoreOS UI. No config provided'));
+    callback(new Error('Cannot initialize CoreGI. No config provided'));
   }
   if(!config.fleetctl) {
-    callback(new Error('Cannot initialize CoreOS UI. No fleetctl config provided'));
+    callback(new Error('Cannot initialize CoreGI. No fleetctl config provided'));
   }
   ui.config = config;
 
@@ -42,8 +43,8 @@ coreosui.init = function init(config, callback) {
   ui.app.use(function(err, req, res, next) {
     res.status(err.status || 500);
     res.render('error', {
-        message: err.message,
-        error: err
+      message: err.message,
+      error: err
     });
   });
 
@@ -51,11 +52,25 @@ coreosui.init = function init(config, callback) {
   ui.app.use('/', routes);
 
   // init modules
-  fleetctl.init(ui.config.fleetctl, callback);
+  async.waterfall([
+    function(callback) {
+      fleetctl.init(ui.config.fleetctl, callback);
+    },
+    function(callback) {
+      etcd.init(ui.config.etcd, callback);
+    }
+  ], function(err) {
+    if(err) {
+      console.log('Error: Starting CoreGI', err);
+      callback(new Error({err: err}, 'Error: Starting CoreGI'));
+    }
+    else {
+      callback(null);
+    }
+  });
 };
 
-
-coreosui.start = function start() {
+coregi.start = function start() {
   var ui = this;
 
   // load modules
@@ -64,14 +79,17 @@ coreosui.start = function start() {
       fleetctl.start(callback);
     },
     function(callback) {
+      etcd.start(callback);
+    },
+    function(callback) {
       http.createServer(ui.app).listen(ui.app.get('port'), callback);
     },
     function(callback) {
-      console.log('[CoreOS UI] Express server listening on port '+ui.app.get('port'));
+      console.log('[CoreGI] Express server listening on port '+ui.app.get('port'));
     }
   ], function(err) {
     if(err) {
-      console.log('Error: Starting CoreOS UI', err);
+      console.log('Error: Starting CoreGI', err);
     }
   });
 };

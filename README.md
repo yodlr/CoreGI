@@ -45,11 +45,19 @@ $ FLEET_BINARY=/usr/local/bin/fleetctl npm start
 CoreGI default options.
 
 ```javascript
-//fleetctl options
-fleetctl: {
-  binary: process.env.FLEET_BINARY || '/usr/bin/fleetctl', //Location of the binary file for fleetctl
-  endpoint: process.env.FLEET_ENDPOINT || 'http://172.17.42.1:4001' //URL for etcd
-}
+//options
+var config = {
+  fleetctl: {
+    //Location of the binary file for fleetctl
+    binary: process.env.FLEET_BINARY || '/usr/bin/fleetctl',
+    //URL for etcd
+    endpoint: process.env.FLEET_ENDPOINT || 'http://172.17.42.1:4001'
+  },
+  etcd: {
+    host: process.env.ETCD_HOST || '192.17.8.101',
+    port: process.env.ETCD_PORT || 4001
+  }
+};
 
 //express listen port
 app.set('port', process.env.PORT || 3000);
