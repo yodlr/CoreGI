@@ -6,7 +6,7 @@ var config = {
     endpoint: process.env.FLEET_ENDPOINT || 'http://172.17.42.1:4001'
   },
   etcd: {
-    host: process.env.ETCD_HOST || '192.17.8.101',
+    host: process.env.ETCD_HOST || '172.17.42.1',
     port: process.env.ETCD_PORT || 4001
   }
 };

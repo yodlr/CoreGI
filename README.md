@@ -54,7 +54,7 @@ var config = {
     endpoint: process.env.FLEET_ENDPOINT || 'http://172.17.42.1:4001'
   },
   etcd: {
-    host: process.env.ETCD_HOST || '192.17.8.101',
+    host: process.env.ETCD_HOST || '172.17.42.1',
     port: process.env.ETCD_PORT || 4001
   }
 };
@@ -78,7 +78,7 @@ Some of the soon to come features include: __unit logs__, __unit status__, __sta
 CoreGI will also be adding features to do __rolling deployment of services__.
 
 
-#### GoreGI is built with:
+#### CoreGI is built with:
 
 * [Node.js](http://nodejs.org/)
 * [AngularJS](https://angularjs.org/)
