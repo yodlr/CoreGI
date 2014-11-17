@@ -9,7 +9,7 @@ WebUI for monitoring CoreOS clusters including fleet and etcd
 
 CoreGI came out of our need for a one-stop dashboard for viewing the status of the applications running in our CoreOS clusters, monitoring etcd keys, and managing rolling software updates. We're pro cli-tools, but have found that simple web-apps provide improved visibility into complex systems.
 
-![CoreGI Dashboard](https://raw.githubusercontent.com/astilabs/CoreGI/master/docs/images/ccoregi-units.png)
+![CoreGI Dashboard](https://raw.githubusercontent.com/astilabs/CoreGI/master/docs/images/coregi-units.png)
 
 ### CoreGI runs in CoreOS
 
