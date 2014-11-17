@@ -1,23 +1,37 @@
 
 <div class="container">
   <div class="coregi-box" ng-controller="EtcdCtrl">
-    <div class="coregi-box-header">
-      <div class="coregi-box-header-title">Etcd List</div>
-      <div class="coregi-box-header-sub">Total: {{keysList.length}}</div>
+    <!-- header -->
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="coregi-box-header">
+          <div class="coregi-box-header-title">Etcd List</div>
+          <div class="coregi-box-header-sub">Total: {{keysList.length}}</div>
+        </div>
+      </div>
     </div>
-    <div class="coregi-box-content">
-      <table class="table coregi-table">
-        <tr class="coregi-box-content-title">
-          <th>Key</th>
-          <th>Directory</th>
-          <th>Value</th>
-        </tr>
-        <tr ng-repeat="key in keysList">
-          <td>{{key.key}}</td>
-          <td>{{key.dir}}</td>
-          <td>{{key.value}}</td>
-        </tr>
-      </table>
+
+    <!-- content -->
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="coregi-box-content">
+          <div class="table-responsive">
+            <table class="table table-hover coregi-table">
+              <tr class="coregi-box-content-title">
+                <th class="col-xs-5 col-sm-5 col-md-5 col-lg-5">Key</th>
+                <th class="col-xs-2 col-sm-2 col-md-2 col-lg-2">Directory</th>
+                <th class="col-xs-5 col-sm-5 col-md-5 col-lg-5">Value</th>
+              </tr>
+              <tr ng-repeat="key in keysList">
+                <td>{{key.key}}</td>
+                <td>{{key.dir}}</td>
+                <td>{{key.value}}</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
     </div>
+
   </div>
 </div>

@@ -1,27 +1,41 @@
 
 <div class="container">
   <div class="coregi-box" ng-controller="UnitsCtrl">
-    <div class="coregi-box-header">
-      <div class="coregi-box-header-title">Units List</div>
-      <div class="coregi-box-header-sub">Total: {{unitsList.length}}</div>
+    <!-- header -->
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="coregi-box-header">
+          <div class="coregi-box-header-title">Units List</div>
+          <div class="coregi-box-header-sub">Total: {{unitsList.length}}</div>
+        </div>
+      </div>
     </div>
-    <div class="coregi-box-content">
-      <table class="table coregi-table">
-        <tr class="coregi-box-content-title">
-          <th>Unit</th>
-          <th>Active</th>
-          <th>Sub</th>
-          <th>Machine ID</th>
-          <th>Machine IP</th>
-        </tr>
-        <tr ng-repeat="unit in unitsList">
-          <td>{{unit.unit}}</td>
-          <td>{{unit.active}}</td>
-          <td>{{unit.sub}}</td>
-          <td>{{unit.machineId}}</td>
-          <td>{{unit.machineIp}}</td>
-        </tr>
-      </table>
+
+    <!-- content -->
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="coregi-box-content">
+          <div class="table-responsive">
+            <table class="table table-hover coregi-table">
+              <tr class="coregi-box-content-title">
+                <th class="col-xs-3 col-sm-3 col-md-3 col-lg-3">Unit</th>
+                <th class="col-xs-1 col-sm-1 col-md-1 col-lg-1">Active</th>
+                <th class="col-xs-1 col-sm-1 col-md-1 col-lg-1">Sub</th>
+                <th class="col-xs-6 col-sm-6 col-md-6 col-lg-5">Machine ID</th>
+                <th class="col-xs-2 col-sm-2 col-md-2 col-lg-2">Machine IP</th>
+              </tr>
+              <tr ng-repeat="unit in unitsList">
+                <td>{{unit.unit}}</td>
+                <td>{{unit.active}}</td>
+                <td>{{unit.sub}}</td>
+                <td>{{unit.machineId}}</td>
+                <td>{{unit.machineIp}}</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
     </div>
+
   </div>
 </div>

@@ -33,14 +33,23 @@ body {
 }
 
 /* Table */
+.table-hover > tbody > tr:hover > td {
+  background-color: #ff6600;
+}
+.table-hover > tbody > tr:hover > th {
+  background-color: #fff;
+}
 .coregi-table, .table>tbody>tr>th {
   border-top: 0;
   line-height: 1.5;
-  padding: 8px;
+  padding: 0;
 }
 .coregi-table th {
   border-top: 0;
   font-weight: normal;
+}
+.coregi-table, .table>tbody>tr>td {
+  padding-left: 0;
 }
 
 /* Content Box */

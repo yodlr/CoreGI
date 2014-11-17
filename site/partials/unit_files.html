@@ -1,31 +1,45 @@
 
 <div class="container">
   <div class="coregi-box" ng-controller="UnitFilesCtrl">
-    <div class="coregi-box-header">
-      <div class="coregi-box-header-title">Unit Files List</div>
-      <div class="coregi-box-header-sub">Total: {{unitFilesList.length}}</div>
+    <!-- header -->
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="coregi-box-header">
+          <div class="coregi-box-header-title">Unit Files List</div>
+          <div class="coregi-box-header-sub">Total: {{unitFilesList.length}}</div>
+        </div>
+      </div>
     </div>
-    <div class="coregi-box-content">
-      <table class="table coregi-table">
-        <tr class="coregi-box-content-title">
-          <th>Unit</th>
-          <th>Hash</th>
-          <th>DState</th>
-          <th>State</th>
-          <!--<th>Target</th>       
-          <th>Machine ID</th>
-          <th>Machine IP</th>-->
-        </tr>
-        <tr ng-repeat="unitFile in unitFilesList">
-          <td>{{unitFile.unit}}</td>
-          <td>{{unitFile.hash}}</td>
-          <td>{{unitFile.dState}}</td>
-          <td>{{unitFile.state}}</td>
-          <!--<td>{{unitFile.target}}</td>
-          <td>{{unitFile.machineId}}</td>
-          <td>{{unitFile.machineIp}}</td>-->
-        </tr>
-      </table>
+
+    <!-- content -->
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="coregi-box-content">
+          <div class="table-responsive">
+            <table class="table table-hover coregi-table">
+              <tr class="coregi-box-content-title">
+                <th class="col-xs-3 col-sm-3 col-md-3 col-lg-3">Unit</th>
+                <th class="col-xs-5 col-sm-5 col-md-5 col-lg-5">Hash</th>
+                <th class="col-xs-2 col-sm-2 col-md-2 col-lg-2">DState</th>
+                <th class="col-xs-2 col-sm-2 col-md-2 col-lg-2">State</th>
+                <!--<th>Target</th>       
+                <th>Machine ID</th>
+                <th>Machine IP</th>-->
+              </tr>
+              <tr ng-repeat="unitFile in unitFilesList">
+                <td>{{unitFile.unit}}</td>
+                <td>{{unitFile.hash}}</td>
+                <td>{{unitFile.dState}}</td>
+                <td>{{unitFile.state}}</td>
+                <!--<td>{{unitFile.target}}</td>
+                <td>{{unitFile.machineId}}</td>
+                <td>{{unitFile.machineIp}}</td>-->
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
     </div>
+
   </div>
 </div>

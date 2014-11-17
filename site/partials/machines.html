@@ -1,23 +1,37 @@
 
 <div class="container">
   <div class="coregi-box" ng-controller="MachinesCtrl">
-    <div class="coregi-box-header">
-      <div class="coregi-box-header-title">Machines List</div>
-      <div class="coregi-box-header-sub">Total: {{machinesList.length}}</div>
+    <!-- header -->
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="coregi-box-header">
+          <div class="coregi-box-header-title">Machines List</div>
+          <div class="coregi-box-header-sub">Total: {{machinesList.length}}</div>
+        </div>
+      </div>
     </div>
-    <div class="coregi-box-content">
-      <table class="table coregi-table">
-        <tr class="coregi-box-content-title">
-          <th>Machine ID</th>
-          <th>Machine IP</th>
-          <th>Meta Data</th>
-        </tr>
-        <tr ng-repeat="machine in machinesList">
-          <td>{{machine.machine}}</td>
-          <td>{{machine.ip}}</td>
-          <td>{{machine.metadata}}</td>
-        </tr>
-      </table>
+
+    <!-- content -->
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="coregi-box-content">
+          <div class="table-responsive">
+            <table class="table table-hover coregi-table">
+              <tr class="coregi-box-content-title">
+                <th class="col-xs-6 col-sm-6 col-md-6 col-lg-5">Machine ID</th>
+                <th class="col-xs-2 col-sm-2 col-md-2 col-lg-2">Machine IP</th>
+                <th class="col-xs-4 col-sm-4 col-md-4 col-lg-5">Meta Data</th>
+              </tr>
+              <tr ng-repeat="machine in machinesList">
+                <td>{{machine.machine}}</td>
+                <td>{{machine.ip}}</td>
+                <td>{{machine.metadata}}</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
     </div>
+
   </div>
 </div>
