@@ -5,25 +5,32 @@ WebUI for monitoring CoreOS clusters including fleet and etcd
 
 ![CoreGI](https://raw.githubusercontent.com/astilabs/CoreGI/master/site/img/coregi_logo.png)
 
+Built with love by the [SpeakIt.io](https://speakit.io) team
+
 ### What is CoreGI
 
 CoreGI came out of our need for a one-stop dashboard for viewing the status of the applications running in our CoreOS clusters, monitoring etcd keys, and managing rolling software updates. We're pro cli-tools, but have found that simple web-apps provide improved visibility into complex systems.
 
+![CoreGI Dashboard](https://raw.githubusercontent.com/astilabs/CoreGI/master/docs/images/coregi-units.png)
+
 ### CoreGI runs in CoreOS
 
-CoreGI is created to be as simple as possible and deploying CoreGI is as easy as running a docker container. CoreGI can also be installed into a __CoreOS cluster__ using a CoreOS service file. Take a look at our CoreOS [service file][coregi_service] for an example. CoreGI can also be ran as an application using Node.js by using environment variables to change the default options, see [Getting Started](#getting-started).
+CoreGI was created to be as simple as possible and deploying CoreGI is as easy as running a docker container. CoreGI can also be installed into a __CoreOS cluster__ using a CoreOS service file. Take a look at our CoreOS [service file][coregi_service] for an example. CoreGI can also be ran as an application using Node.js by using environment variables to change the default options, see [Getting Started](#getting-started).
+
+We have setup automated Docker Hub builds for CoreGI [here](https://registry.hub.docker.com/u/speakit/coregi/)
+
 
 ### Getting Started
 
 ##### CoreOS
 
 ```
-$ fleetctl submit services/coregi.service
-$ fleetctl start coregi.service
+git clone https://github.com/astilabs/CoreGI.git
+cd CoreGI
+fleetctl start services/coregi.service
 ```
 
-CoreGI will listen on port 3000 by default.
-This can be modified in the CoreOS service file by using `-p` flag, see [service file][coregi_service].
+Our example service file is setup to be a Global service listening on port 3000.  This can be modified in the CoreOS service file which can be found [here][coregi_service].
 
 ##### Docker
 
@@ -72,10 +79,15 @@ CoreGI also exposes a __REST API__ with the following endpoints:
 * http://<'dockerhost'>/api/units
 * http://<'dockerhost'>/api/unitFiles
 
-#### Upcoming Features
+#### Future Features
 
-Some of the soon to come features include: __unit logs__, __unit status__, __start/stop/load/unload/submit/destroy unit files__, and adding __etcd__ key monitoring (and eventually __create/edit/delete__).
-CoreGI will also be adding features to do __rolling deployment of services__.
+Some of the features we're thinking/planning on implementing include:
+
+* Unit logs
+* Unit status
+* Start/stop/load/unload/etc units
+* Monitoring and editing etcd keys
+* Rolling deployment of units
 
 
 #### CoreGI is built with:
@@ -88,4 +100,3 @@ CoreGI will also be adding features to do __rolling deployment of services__.
 
 
 [coregi_service]: https://github.com/astilabs/CoreGI/blob/master/services/coregi.service
-
