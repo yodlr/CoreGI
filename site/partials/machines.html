@@ -18,14 +18,14 @@
           <div class="table-responsive">
             <table class="table table-hover coregi-table">
               <tr class="coregi-box-content-title">
-                <th class="col-xs-6 col-sm-6 col-md-6 col-lg-5">Machine ID</th>
+                <th class="col-xs-4 col-sm-4 col-md-4 col-lg-4">Machine ID</th>
                 <th class="col-xs-2 col-sm-2 col-md-2 col-lg-2">Machine IP</th>
-                <th class="col-xs-4 col-sm-4 col-md-4 col-lg-5">Meta Data</th>
+                <th class="col-xs-6 col-sm-6 col-md-6 col-lg-6">Meta Data</th>
               </tr>
               <tr ng-repeat="machine in machinesList">
                 <td>{{machine.machine}}</td>
                 <td>{{machine.ip}}</td>
-                <td>{{machine.metadata}}</td>
+                <td><span ng-repeat="(key,value) in machine.metadata"><span class="label label-primary coregi-label">{{key}}: {{value}}</span> </span></td>
               </tr>
             </table>
           </div>

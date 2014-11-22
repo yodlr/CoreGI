@@ -32,6 +32,19 @@ coregiControllers.controller('UnitsCtrl',  ['$rootScope', '$scope', 'coregiServi
       }
     });
 
+    $scope.start = function start(unit) {
+      if(unit.active === 'active') {
+        coregiService.stopUnit(unit);
+      }
+      else {
+        coregiService.startUnit(unit);
+      }
+    };
+
+    $scope.destroy = function destroy(unit) {
+      coregiService.destroyUnit(unit);
+    };
+
   }
 ]);
 

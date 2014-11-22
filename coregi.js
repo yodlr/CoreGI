@@ -76,10 +76,10 @@ coregi.start = function start() {
   // load modules
   async.waterfall([
     function(callback) {
-      fleetctl.start(callback);
+      fleetctl.startCron(callback);
     },
     function(callback) {
-      etcd.start(callback);
+      etcd.startCron(callback);
     },
     function(callback) {
       http.createServer(ui.app).listen(ui.app.get('port'), callback);

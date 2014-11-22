@@ -22,6 +22,9 @@ body {
 .navbar-default .navbar-nav>.active>a:hover {
   color: #ff4400;
 }
+.navbar-default .navbar-nav>.active>a:focus {
+  color: #ff4400;
+}
 .coregi-nav,.coregi-subnav {
   background: #fff;
   box-shadow: 0 0 5px rgba(150,150,150,0.75);
@@ -50,6 +53,10 @@ body {
 }
 .coregi-table, .table>tbody>tr>td {
   padding-left: 0;
+}
+
+.coregi-label {
+  color: #333;
 }
 
 /* Content Box */

@@ -1,7 +1,7 @@
 {
-  "name": "CoreOS-UI",
+  "name": "CoreGI",
   "version": "0.0.1",
-  "homepage": "https://github.com/astilabs/CoreOS-UI",
+  "homepage": "https://github.com/astilabs/CoreGI",
   "authors": [
     "Jared De La Cruz <jared@labs.asti-usa.com>"
   ],

@@ -1,6 +1,6 @@
-var service = angular.module('coregiServices', ['ngResource']);
+var coregiServices = angular.module('coregiServices', ['ngResource']);
 
-service.factory('coregiService', ['$rootScope', '$resource', '$timeout',
+coregiServices.factory('coregiService', ['$rootScope', '$resource', '$timeout',
   function($rootScope, $resource, $timeout) {
 
     // $resource endpoints
@@ -9,7 +9,10 @@ service.factory('coregiService', ['$rootScope', '$resource', '$timeout',
     });
 
     var unitsService = $resource('/api/units/:unit', {}, {
-      get: {method: 'GET', isArray: true}
+      get: {method: 'GET', isArray: true},
+      start: {method: 'PUT', isArray: false, params: {unit: '@unit', action: 'start'}},
+      stop: {method: 'PUT', isArray: false, params: {unit: '@unit', action: 'stop'}},
+      destroy: {method: 'DELETE', isArray: false, params: {unit: '@unit', action: 'destroy'}}
     });
 
     var unitFilesService = $resource('/api/unitFiles/:unitFile', {}, {
@@ -72,6 +75,27 @@ service.factory('coregiService', ['$rootScope', '$resource', '$timeout',
       },
       getKeysList: function getKeysList() {
         return keysList;
+      },
+      startUnit: function startUnit(unit, callback) {
+        unitsService.start(unit, function(data) {
+          if(callback) {
+            callback(null, data);
+          }
+        });
+      },
+      stopUnit: function stopUnit(unit) {
+        unitsService.stop(unit, function(data) {
+          if(callback) {
+            callback(null, data);
+          }
+        });
+      },
+      destroyUnit: function destroyUnit(unit) {
+        unitsService.destroy(unit, function(data) {
+          if(callback) {
+            callback(null, data);
+          }
+        });
       }
     };
   }

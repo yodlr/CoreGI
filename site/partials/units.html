@@ -18,11 +18,12 @@
           <div class="table-responsive">
             <table class="table table-hover coregi-table">
               <tr class="coregi-box-content-title">
-                <th class="col-xs-3 col-sm-3 col-md-3 col-lg-3">Unit</th>
+                <th class="col-xs-4 col-sm-4 col-md-4 col-lg-4">Unit</th>
                 <th class="col-xs-1 col-sm-1 col-md-1 col-lg-1">Active</th>
                 <th class="col-xs-1 col-sm-1 col-md-1 col-lg-1">Sub</th>
-                <th class="col-xs-6 col-sm-6 col-md-6 col-lg-5">Machine ID</th>
+                <th class="col-xs-3 col-sm-3 col-md-3 col-lg-3">Machine ID</th>
                 <th class="col-xs-2 col-sm-2 col-md-2 col-lg-2">Machine IP</th>
+                <th class="col-xs-1 col-sm-1 col-md-1 col-lg-1">Edit</th>
               </tr>
               <tr ng-repeat="unit in unitsList">
                 <td>{{unit.unit}}</td>
@@ -30,6 +31,16 @@
                 <td>{{unit.sub}}</td>
                 <td>{{unit.machineId}}</td>
                 <td>{{unit.machineIp}}</td>
+                <td>
+                  <div class="btn-group" role="group">
+                    <a class="btn btn-default btn-xs" role="button" ng-click="start(unit)">
+                      <span class="glyphicon" aria-hidden="true" ng-class="{'glyphicon-stop': unit.active == 'active', 'glyphicon-play': unit.active != 'active'}"></span>
+                    </a>
+                    <a class="btn btn-default btn-xs" role="button" ng-click="destroy(unit)">
+                      <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                    </a>
+                  </div>
+                </td>
               </tr>
             </table>
           </div>
