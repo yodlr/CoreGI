@@ -3,21 +3,21 @@ CoreGI
 
 WebUI for monitoring CoreOS clusters including fleet and etcd
 
-![CoreGI](https://raw.githubusercontent.com/astilabs/CoreGI/master/site/img/coregi_logo.png)
+![CoreGI](https://raw.githubusercontent.com/yodlr/CoreGI/master/site/img/coregi_logo.png)
 
-Built with love by the [SpeakIt.io](https://speakit.io) team
+Built with love by the [Yodlr](https://getyodlr.com) team
 
 ### What is CoreGI
 
 CoreGI came out of our need for a one-stop dashboard for viewing the status of the applications running in our CoreOS clusters, monitoring etcd keys, and managing rolling software updates. We're pro cli-tools, but have found that simple web-apps provide improved visibility into complex systems.
 
-![CoreGI Dashboard](https://raw.githubusercontent.com/astilabs/CoreGI/master/docs/images/coregi-units.png)
+![CoreGI Dashboard](https://raw.githubusercontent.com/yodlr/CoreGI/master/docs/images/coregi-units.png)
 
 ### CoreGI runs in CoreOS
 
 CoreGI was created to be as simple as possible and deploying CoreGI is as easy as running a docker container. CoreGI can also be installed into a __CoreOS cluster__ using a CoreOS service file. Take a look at our CoreOS [service file][coregi_service] for an example. CoreGI can also be ran as an application using Node.js by using environment variables to change the default options, see [Getting Started](#getting-started).
 
-We have setup automated Docker Hub builds for CoreGI [here](https://registry.hub.docker.com/u/speakit/coregi/)
+We have setup automated Docker Hub builds for CoreGI [here](https://registry.hub.docker.com/u/yodlr/coregi/)
 
 
 ### Getting Started
@@ -25,7 +25,7 @@ We have setup automated Docker Hub builds for CoreGI [here](https://registry.hub
 ##### CoreOS
 
 ```
-git clone https://github.com/astilabs/CoreGI.git
+git clone https://github.com/yodlr/CoreGI.git
 cd CoreGI
 fleetctl start services/coregi.service
 ```
@@ -35,7 +35,7 @@ Our example service file is setup to be a Global service listening on port 3000.
 ##### Docker
 
 ```
-$ docker run --name coregi -p 3000:3000 speakit/coregi:latest
+$ docker run --name coregi -p 3000:3000 yodlr/coregi:latest
 ```
 
 ##### Node.js
@@ -99,4 +99,4 @@ Some of the features we're thinking/planning on implementing include:
 
 
 
-[coregi_service]: https://github.com/astilabs/CoreGI/blob/master/services/coregi.service
+[coregi_service]: https://github.com/yodlr/CoreGI/blob/master/services/coregi.service

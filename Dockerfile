@@ -1,6 +1,6 @@
-FROM speakit/nodejs
+FROM yodlr/nodejs
 
-MAINTAINER Jared De La Cruz <jared@speakit.io>
+MAINTAINER Jared De La Cruz <jared@getyodlr.com>
 
 RUN apt-get -qq update
 RUN apt-get install -yqq wget ca-certificates build-essential

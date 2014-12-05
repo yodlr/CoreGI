@@ -10,10 +10,10 @@ User=core
 TimeoutStartSec=0
 ExecStartPre=-/usr/bin/docker kill coregi
 ExecStartPre=-/usr/bin/docker rm coregi
-ExecStartPre=/usr/bin/docker pull speakit/coregi:latest
+ExecStartPre=/usr/bin/docker pull yodlr/coregi:latest
 ExecStart=/usr/bin/docker run --name coregi \
       -p 3000:3000 \
-      speakit/coregi:latest
+      yodlr/coregi:latest
 ExecStop=/usr/bin/docker stop coregi
 
 [X-Fleet]
