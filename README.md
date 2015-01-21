@@ -1,6 +1,8 @@
 CoreGI
 =========
 
+![DockerHub Stats](http://dockeri.co/image/yodlr/coregi)
+
 WebUI for monitoring CoreOS clusters including fleet and etcd
 
 ![CoreGI](https://raw.githubusercontent.com/yodlr/CoreGI/master/site/img/coregi_logo.png)
