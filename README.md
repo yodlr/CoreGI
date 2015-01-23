@@ -42,7 +42,7 @@ $ docker run --name coregi -p 3000:3000 yodlr/coregi:latest
 
 ##### Node.js
 
-To change default options, set the environment variables, see [options](#coregi-options).
+To change default options, see [options](#coregi-options).
 Example with custom option:
 
 ```
@@ -51,35 +51,25 @@ $ FLEET_BINARY=/usr/local/bin/fleetctl npm start
 
 ### CoreGI Options
 
-CoreGI default options.
+CoreGI default options. To change the default options, simply set the value of any of the following environment variables.
 
 ```javascript
-//options
-var config = {
-  fleetctl: {
-    //Location of the binary file for fleetctl
-    binary: process.env.FLEET_BINARY || '/usr/bin/fleetctl',
-    //URL for etcd
-    endpoint: process.env.FLEET_ENDPOINT || 'http://172.17.42.1:4001'
-  },
-  etcd: {
-    host: process.env.ETCD_HOST || '172.17.42.1',
-    port: process.env.ETCD_PORT || 4001
-  }
-};
-
-//express listen port
-app.set('port', process.env.PORT || 3000);
+PORT = 3000
+FLEET_BINARY = '/usr/bin/fleetctl'
+FLEET_ENDPOINT = 'http://172.17.42.1:4001'
+ETCD_HOST = '172.17.42.1'
+ETCD_PORT = 4001
 ```
 
 ### CoreGI Features
 
-CoreGI currently supports querying Fleet for listing of __machines__, __units__, and __unit-files__.
+CoreGI currently supports querying Fleet for listing of __machines__, __units__, __unit-files__ and Etcd for listing of __keys__.
 CoreGI also exposes a __REST API__ with the following endpoints:
 
-* http://<'dockerhost'>/api/machines
-* http://<'dockerhost'>/api/units
-* http://<'dockerhost'>/api/unitFiles
+* GET /api/machines
+* GET /api/units
+* GET /api/unitFiles
+* GET /api/keys
 
 #### Future Features
 
@@ -87,7 +77,7 @@ Some of the features we're thinking/planning on implementing include:
 
 * Unit logs
 * Unit status
-* Start/stop/load/unload/etc units
+* Start/stop/load/unload units
 * Monitoring and editing etcd keys
 * Rolling deployment of units
 

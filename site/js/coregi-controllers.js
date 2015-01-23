@@ -69,5 +69,11 @@ coregiControllers.controller('EtcdCtrl',  ['$rootScope', '$scope', 'coregiServic
       }
     });
 
+    $scope.$watchCollection(coregiService.getKeysBranchList, function(keysBranchList) {
+      if(keysBranchList) {
+        $scope.keysBranchList = keysBranchList;
+      }
+    });
+
   }
 ]);

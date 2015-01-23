@@ -44,19 +44,47 @@ body {
 }
 .coregi-table, .table>tbody>tr>th {
   border-top: 0;
+  font-weight: normal;
   line-height: 1.5;
-  padding: 0;
 }
-.coregi-table th {
+.coregi-table, .table>thead>tr>th {
+  border-bottom: 0;
   border-top: 0;
   font-weight: normal;
-}
-.coregi-table, .table>tbody>tr>td {
-  padding-left: 0;
+  line-height: 1.5;
 }
 
+/* Dropdown */
 .coregi-label {
   color: #333;
+}
+.coregi-badge {
+  background-color: #428bca;
+}
+.coregi-dropdown {
+  color: #333;
+  padding: 3px 3px 3px 20px;
+}
+.coregi-dropdown-row {
+  min-height: 26px;
+  padding-top: 2px;
+  color: #333;
+  display: block;
+}
+.coregi-dropdown-row:hover {
+  background-color: #ff6600;
+}
+.dropdown-menu>li>a:hover {
+  background-color: #ff6600;
+}
+.coregi-dropdown-row a:hover {
+  color: #333;
+  cursor:pointer;
+  text-decoration: none;
+}
+.coregi-btn-dropdown {
+  font-size: 10px;
+  padding: 1px 3px;
 }
 
 /* Content Box */
