@@ -1,6 +1,6 @@
 {
   "name": "CoreGI",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "WebUI for monitoring CoreOS clusters including fleet and etcd",
   "main": "app.js",
   "scripts": {

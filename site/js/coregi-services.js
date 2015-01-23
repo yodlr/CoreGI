@@ -28,11 +28,14 @@ coregiServices.factory('coregiService', ['$rootScope', '$resource', '$timeout',
     var unitsList = [];
     var unitFilesList = [];
     var keysList = [];
+    var keysBranchList = [];
 
     // refresh data
     var refreshMachines = function refreshMachines() {
       machinesService.query(function(data) {
-        angular.copy(data, machinesList);
+        if(!angular.equals(machinesList, data)) {
+          angular.copy(data, machinesList);
+        }
       });
       $timeout(refreshMachines, 3000);
     };
@@ -40,7 +43,9 @@ coregiServices.factory('coregiService', ['$rootScope', '$resource', '$timeout',
 
     var refreshUnits = function refreshUnits() {
       unitsService.query(function(data) {
-        angular.copy(data, unitsList);
+        if(!angular.equals(unitsList, data)) {
+          angular.copy(data, unitsList);
+        }
       });
       $timeout(refreshUnits, 3000);
     };
@@ -48,7 +53,9 @@ coregiServices.factory('coregiService', ['$rootScope', '$resource', '$timeout',
 
     var refreshUnitFiles = function refreshUnitFiles() {
       unitFilesService.query(function(data) {
-        angular.copy(data, unitFilesList);
+        if(!angular.equals(unitFilesList, data)) {
+          angular.copy(data, unitFilesList);
+        }
       });
       $timeout(refreshUnitFiles, 3000);
     };
@@ -56,11 +63,40 @@ coregiServices.factory('coregiService', ['$rootScope', '$resource', '$timeout',
 
     var refreshKeys = function refreshKeys() {
       keysService.query(function(data) {
-        angular.copy(data, keysList);
+        if(!angular.equals(keysList, data)) {
+          angular.copy(data, keysList);
+          keysBranchList = traverseTree();
+        }
       });
       $timeout(refreshKeys, 3000);
     };
     refreshKeys();
+
+    var traverseTree = function(callback) {
+      var etcdTree = angular.copy(keysList, etcdTree);
+      var etcdRootBranch;
+      var results = [];
+
+      var recurseBranch = function recurseBranch(branch, depth) {
+        var nodes;
+        var node;
+        //callback(branch, depth);
+        results.push(branch);
+        if(branch.nodes) {
+          nodes = branch.nodes;
+          for(var i = 0; i < nodes.length; i++) {
+            node = nodes[i];
+            recurseBranch(node, depth+1);
+          }
+        }
+      };
+
+      for(var y = 0; y < etcdTree.length; y++) {
+        etcdRootBranch = etcdTree[y];
+        recurseBranch(etcdRootBranch, 1);
+      }
+      return results;
+    };
 
     // exports
     return {
@@ -75,6 +111,9 @@ coregiServices.factory('coregiService', ['$rootScope', '$resource', '$timeout',
       },
       getKeysList: function getKeysList() {
         return keysList;
+      },
+      getKeysBranchList: function getKeysBranchList() {
+        return keysBranchList;
       },
       startUnit: function startUnit(unit, callback) {
         unitsService.start(unit, function(data) {
