@@ -10,37 +10,35 @@ var path = require('path');
 var routes = require('./routes');
 
 var coregi = module.exports = {};
-  
-coregi.init = function init(config, callback) {
-  var ui = this;
 
+coregi.init = function init(config, callback) {
   if(!config) {
     callback(new Error('Cannot initialize CoreGI. No config provided'));
   }
   if(!config.fleetctl) {
     callback(new Error('Cannot initialize CoreGI. No fleetctl config provided'));
   }
-  ui.config = config;
+  coregi.config = config;
 
-  ui.app = express();
+  coregi.app = express();
 
   // view engine setup
-  ui.app.set('views', path.join(__dirname, 'site/views'));
+  coregi.app.set('views', path.join(__dirname, 'site/views'));
   //app.set('view engine', 'hbs');
-  ui.app.set('view engine', 'html');
-  ui.app.engine('html', require('hbs').__express);
+  coregi.app.set('view engine', 'html');
+  coregi.app.engine('html', require('hbs').__express);
 
-  ui.app.use(favicon(__dirname + '/site/img/favicon.ico'));
-  ui.app.use(bodyParser.json());
-  ui.app.use(bodyParser.urlencoded({extended: true}));
-  ui.app.use(cookieParser());
-  ui.app.use(express.static(path.join(__dirname, 'site')));
+  coregi.app.use(favicon(__dirname + '/site/img/favicon.ico'));
+  coregi.app.use(bodyParser.json());
+  coregi.app.use(bodyParser.urlencoded({extended: true}));
+  coregi.app.use(cookieParser());
+  coregi.app.use(express.static(path.join(__dirname, 'site')));
 
   // set express port
-  ui.app.set('port', process.env.PORT || 3000);
+  coregi.app.set('port', process.env.PORT || 3000);
 
   // error handlers
-  ui.app.use(function(err, req, res, next) {
+  coregi.app.use(function(err, req, res, next) {
     res.status(err.status || 500);
     res.render('error', {
       message: err.message,
@@ -49,15 +47,15 @@ coregi.init = function init(config, callback) {
   });
 
   // express routes
-  ui.app.use('/', routes);
+  coregi.app.use('/', routes);
 
   // init modules
   async.waterfall([
     function(callback) {
-      fleetctl.init(ui.config.fleetctl, callback);
+      fleetctl.init(coregi.config.fleetctl, callback);
     },
     function(callback) {
-      etcd.init(ui.config.etcd, callback);
+      etcd.init(coregi.config.etcd, callback);
     }
   ], function(err) {
     if(err) {
@@ -71,8 +69,6 @@ coregi.init = function init(config, callback) {
 };
 
 coregi.start = function start() {
-  var ui = this;
-
   // load modules
   async.waterfall([
     function(callback) {
@@ -82,10 +78,10 @@ coregi.start = function start() {
       etcd.startCron(callback);
     },
     function(callback) {
-      http.createServer(ui.app).listen(ui.app.get('port'), callback);
+      http.createServer(coregi.app).listen(coregi.app.get('port'), callback);
     },
     function(callback) {
-      console.log('[CoreGI] Express server listening on port '+ui.app.get('port'));
+      console.log('[CoreGI] Express server listening on port '+coregi.app.get('port'));
     }
   ], function(err) {
     if(err) {
