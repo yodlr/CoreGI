@@ -53,7 +53,7 @@ $ FLEET_BINARY=/usr/local/bin/fleetctl npm start
 
 CoreGI default options. To change the default options, simply set the value of any of the following environment variables.
 
-```javascript
+```
 PORT = 3000
 FLEET_BINARY = '/usr/bin/fleetctl'
 FLEET_ENDPOINT = 'http://172.17.42.1:4001'
