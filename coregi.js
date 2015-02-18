@@ -6,6 +6,7 @@ var etcd = require('./lib/etcd');
 var fleetctl = require('./lib/fleetctl');
 var favicon = require('serve-favicon');
 var http = require('http');
+var log = require('./lib/logger')();
 var path = require('path');
 var routes = require('./routes');
 
@@ -19,6 +20,9 @@ coregi.init = function init(config, callback) {
     callback(new Error('Cannot initialize CoreGI. No fleetctl config provided'));
   }
   coregi.config = config;
+  log.info({
+    config: config
+  }, 'Starting coregi application');
 
   coregi.app = express();
 
@@ -59,7 +63,7 @@ coregi.init = function init(config, callback) {
     }
   ], function(err) {
     if(err) {
-      console.log('Error: Starting CoreGI', err);
+      log.error({err: err}, 'Error - CoreGI: init');
       callback(new Error({err: err}, 'Error: Starting CoreGI'));
     }
     else {
@@ -81,11 +85,11 @@ coregi.start = function start() {
       http.createServer(coregi.app).listen(coregi.app.get('port'), callback);
     },
     function(callback) {
-      console.log('[CoreGI] Express server listening on port '+coregi.app.get('port'));
+      log.info({port: coregi.app.get('port')}, 'CoreGI: Express server listening on port '+coregi.app.get('port'));
     }
   ], function(err) {
     if(err) {
-      console.log('Error: Starting CoreGI', err);
+      log.error({err: err}, 'Error - CoreGI: start');
     }
   });
 };
