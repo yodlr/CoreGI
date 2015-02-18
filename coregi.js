@@ -20,6 +20,9 @@ coregi.init = function init(config, callback) {
     callback(new Error('Cannot initialize CoreGI. No fleetctl config provided'));
   }
   coregi.config = config;
+  log.info({
+    config: config
+  }, 'Starting coregi application');
 
   coregi.app = express();
 

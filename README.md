@@ -59,6 +59,7 @@ FLEET_BINARY = '/usr/bin/fleetctl'
 FLEET_ENDPOINT = 'http://172.17.42.1:4001'
 ETCD_HOST = '172.17.42.1'
 ETCD_PORT = 4001
+LOG_LEVEL = 'info'
 ```
 
 ### CoreGI Features
