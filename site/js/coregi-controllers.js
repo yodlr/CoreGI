@@ -25,24 +25,37 @@ coregiControllers.controller('MachinesCtrl',  ['$rootScope', '$scope', 'coregiSe
 
 coregiControllers.controller('UnitsCtrl',  ['$rootScope', '$scope', 'coregiService',
   function($rootScope, $scope, coregiService) {
+    var changedUnit = {};
 
     $scope.$watchCollection(coregiService.getUnitsList, function(unitsList) {
       if(unitsList) {
         $scope.unitsList = unitsList;
+        for(var u in $scope.unitsList) {
+          if($scope.unitsList[u].machineId === changedUnit.machineId) {
+            $scope.unitsList[u].active = changedUnit.active;
+            changedUnit = {};
+          }
+        }
       }
     });
 
     $scope.start = function start(unit) {
       if(unit.active === 'active') {
         coregiService.stopUnit(unit);
+        changedUnit = unit;
+        unit.active = 'waiting';
       }
       else {
         coregiService.startUnit(unit);
+        changedUnit = unit;
+        unit.active = 'waiting';
       }
     };
 
     $scope.destroy = function destroy(unit) {
       coregiService.destroyUnit(unit);
+      changedUnit = unit;
+      unit.active = 'waiting';
     };
 
   }

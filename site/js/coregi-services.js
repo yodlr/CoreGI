@@ -115,25 +115,16 @@ coregiServices.factory('coregiService', ['$rootScope', '$resource', '$timeout',
       getKeysBranchList: function getKeysBranchList() {
         return keysBranchList;
       },
-      startUnit: function startUnit(unit, callback) {
+      startUnit: function startUnit(unit) {
         unitsService.start(unit, function(data) {
-          if(callback) {
-            callback(null, data);
-          }
         });
       },
       stopUnit: function stopUnit(unit) {
         unitsService.stop(unit, function(data) {
-          if(callback) {
-            callback(null, data);
-          }
         });
       },
       destroyUnit: function destroyUnit(unit) {
         unitsService.destroy(unit, function(data) {
-          if(callback) {
-            callback(null, data);
-          }
         });
       }
     };
