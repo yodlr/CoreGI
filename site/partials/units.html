@@ -34,7 +34,7 @@
                 <td>
                   <div class="btn-group" role="group">
                     <a class="btn btn-default btn-xs" role="button" ng-click="start(unit)">
-                      <span class="glyphicon" aria-hidden="true" ng-class="{'glyphicon-stop': unit.active == 'active', 'glyphicon-play': unit.active == 'inactive', 'glyphicon-exclamation-sign': unit.active == 'failed', 'glyphicon-time': unit.active == 'waiting' || unit.active == 'activating' || unit.active == 'deactivating'}"></span>
+                      <span class="glyphicon" aria-hidden="true" ng-class="{'glyphicon-stop': unit.active == 'active', 'glyphicon-play': unit.active == 'inactive', 'glyphicon-exclamation-sign': unit.active == 'failed', 'glyphicon-time': unit.active == 'busy' || unit.active == 'activating' || unit.active == 'deactivating'}"></span>
                     </a>
                     <a class="btn btn-default btn-xs" role="button" ng-click="destroy(unit)">
                       <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>

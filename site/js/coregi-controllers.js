@@ -25,15 +25,17 @@ coregiControllers.controller('MachinesCtrl',  ['$rootScope', '$scope', 'coregiSe
 
 coregiControllers.controller('UnitsCtrl',  ['$rootScope', '$scope', 'coregiService',
   function($rootScope, $scope, coregiService) {
-    var changedUnit = {};
+    var changedUnits = {};
 
     $scope.$watchCollection(coregiService.getUnitsList, function(unitsList) {
       if(unitsList) {
         $scope.unitsList = unitsList;
         for(var u in $scope.unitsList) {
-          if($scope.unitsList[u].machineId === changedUnit.machineId) {
-            $scope.unitsList[u].active = changedUnit.active;
-            changedUnit = {};
+          if(changedUnits[$scope.unitsList[u].unit]) {
+            if($scope.unitsList[u].active === changedUnits[$scope.unitsList[u].unit].active) {
+              $scope.unitsList[u].active = 'busy';
+              delete changedUnits[$scope.unitsList[u].unit];
+            }
           }
         }
       }
@@ -42,20 +44,20 @@ coregiControllers.controller('UnitsCtrl',  ['$rootScope', '$scope', 'coregiServi
     $scope.start = function start(unit) {
       if(unit.active === 'active') {
         coregiService.stopUnit(unit);
-        changedUnit = unit;
-        unit.active = 'waiting';
+        changedUnits[unit.unit] = angular.copy(unit);
+        unit.active = 'busy';
       }
       else {
         coregiService.startUnit(unit);
-        changedUnit = unit;
-        unit.active = 'waiting';
+        changedUnits[unit.unit] = angular.copy(unit);
+        unit.active = 'busy';
       }
     };
 
     $scope.destroy = function destroy(unit) {
       coregiService.destroyUnit(unit);
-      changedUnit = unit;
-      unit.active = 'waiting';
+      delete changedUnits[unit.unit];
+      unit.active = 'busy';
     };
 
   }
