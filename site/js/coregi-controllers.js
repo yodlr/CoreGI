@@ -30,6 +30,19 @@ coregiControllers.controller('UnitsCtrl',  ['$rootScope', '$scope', 'coregiServi
     $scope.$watchCollection(coregiService.getUnitsList, function(unitsList) {
       if(unitsList) {
         $scope.unitsList = unitsList;
+
+        for(var c in changedUnits) {
+          var found = false;
+          for(var i in $scope.unitsList) {
+            if(changedUnits[c].unit == $scope.unitsList[i].unit) {
+              found = true;
+            }
+          }
+          if(!found) {
+            delete changedUnits[c];
+          }
+        }
+
         for(var u in $scope.unitsList) {
           if(changedUnits[$scope.unitsList[u].unit]) {
             if($scope.unitsList[u].active === changedUnits[$scope.unitsList[u].unit].active) {
@@ -56,7 +69,7 @@ coregiControllers.controller('UnitsCtrl',  ['$rootScope', '$scope', 'coregiServi
 
     $scope.destroy = function destroy(unit) {
       coregiService.destroyUnit(unit);
-      delete changedUnits[unit.unit];
+      changedUnits[unit.unit] = angular.copy(unit);
       unit.active = 'busy';
     };
 
