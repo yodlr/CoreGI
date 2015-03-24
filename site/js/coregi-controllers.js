@@ -36,6 +36,7 @@ coregiControllers.controller('UnitsCtrl',  ['$rootScope', '$scope', 'coregiServi
           for(var i in $scope.unitsList) {
             if(changedUnits[c].unit == $scope.unitsList[i].unit) {
               found = true;
+              break;
             }
           }
           if(!found) {
