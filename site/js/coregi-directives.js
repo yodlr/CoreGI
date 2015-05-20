@@ -1,1 +1,1 @@
-var coregiDirective = angular.module('coregiDirectives', []);
+var coregiDirectives = angular.module('coregiDirectives', []);
