@@ -56,6 +56,7 @@ CoreGI default options. To change the default options, simply set the value of a
 ```
 PORT = 3000
 FLEET_BINARY = '/usr/bin/fleetctl'
+FLEET_TUNNEL = '172.17.42.1'  //If set, will remove FLEET_ENDPOINT option.
 FLEET_ENDPOINT = 'http://172.17.42.1:4001'
 ETCD_HOST = '172.17.42.1'
 ETCD_PORT = 4001

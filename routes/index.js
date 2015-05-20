@@ -97,6 +97,39 @@ router.get('/api/unitFiles', function(req, res) {
   res.json(unitFiles);
 });
 
+router.get('/api/unitFiles/:unit', function(req, res) {
+  var unitFiles = cache.get('unitFiles') || [];
+  var unitFile = {error: 'unit not found'};
+  for(var index in unitFiles) {
+    if(unitFiles[index].unit === req.params.unit) {
+      unitFile = unitFiles[index];
+      break;
+    }
+  }
+  if(unitFile.error) {
+    res.status(404).json(unitFile);
+  }
+  else {
+    res.json(unitFile);
+  }
+});
+
+router.delete('/api/unitFiles/:unit', function(req, res) {
+  if(req.params && req.query) {
+    fleetctl.destroy(req.params, function(err) {
+      if(err) {
+        res.status(400).json({error: 'error destroying unitFile'});
+      }
+      else {
+        res.status(200).end();
+      }
+    });
+  }
+  else {
+    res.status(400).json({error: 'no unitFile provided'});
+  }
+});
+
 router.get('/api/keys', function(req, res) {
   var keys = cache.get('keys') || [];
   res.json(keys);

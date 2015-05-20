@@ -86,6 +86,11 @@ coregiControllers.controller('UnitFilesCtrl',  ['$rootScope', '$scope', 'coregiS
       }
     });
 
+    $scope.destroy = function destroy(unit) {
+      coregiService.destroyUnit(unit);
+      unit.active = 'busy';
+    };
+
   }
 ]);
 

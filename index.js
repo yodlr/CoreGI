@@ -11,6 +11,11 @@ var config = {
   }
 };
 
+if(process.env.FLEET_TUNNEL) {
+  delete config.fleetctl.endpoint;
+  config.fleetctl.tunnel = process.env.FLEET_TUNNEL;
+}
+
 coregi.init(config, function(err) {
   coregi.start();
 });

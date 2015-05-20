@@ -1,4 +1,4 @@
-var coregi = angular.module('coregiApp', ['ngRoute', 'coregiControllers', 'coregiServices']);
+var coregi = angular.module('coregiApp', ['ngRoute', 'coregiControllers', 'coregiDirectives', 'coregiServices']);
 
 coregi.config(['$routeProvider', '$locationProvider',
 function($routeProvider, $locationProvider) {

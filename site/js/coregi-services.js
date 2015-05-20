@@ -16,7 +16,8 @@ coregiServices.factory('coregiService', ['$rootScope', '$resource', '$timeout',
     });
 
     var unitFilesService = $resource('/api/unitFiles/:unitFile', {}, {
-      get: {method: 'GET', isArray: true}
+      get: {method: 'GET', isArray: true},
+      destroy: {method: 'DELETE', isArray: false, params: {unit: '@unit', action: 'destroy'}}
     });
 
     var keysService = $resource('/api/keys/:key', {}, {
@@ -125,6 +126,10 @@ coregiServices.factory('coregiService', ['$rootScope', '$resource', '$timeout',
       },
       destroyUnit: function destroyUnit(unit) {
         unitsService.destroy(unit, function(data) {
+        });
+      },
+      destroyUnitFile: function destroyUnitFile(unit) {
+        unitFilesService.destroy(unit, function(data) {
         });
       }
     };
