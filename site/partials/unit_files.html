@@ -23,7 +23,7 @@
                 <th class="col-xs-2 col-sm-2 col-md-2 col-lg-2">DState</th>
                 <th class="col-xs-2 col-sm-2 col-md-2 col-lg-2">State</th>
                 <th class="col-xs-1 col-sm-1 col-md-1 col-lg-1">Edit</th>
-                <!--<th>Target</th>       
+                <!--<th>Target</th>
                 <th>Machine ID</th>
                 <th>Machine IP</th>-->
               </tr>
@@ -32,7 +32,13 @@
                 <td>{{unitFile.hash}}</td>
                 <td>{{unitFile.dState}}</td>
                 <td>{{unitFile.state}}</td>
-                <td></td>
+                <td>
+                  <div class="btn-group" role="group">
+                    <a class="btn btn-default btn-xs" role="button" ng-click="destroy(unitFile)">
+                      <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                    </a>
+                  </div>
+                </td>
                 <!--<td>{{unitFile.target}}</td>
                 <td>{{unitFile.machineId}}</td>
                 <td>{{unitFile.machineIp}}</td>-->
