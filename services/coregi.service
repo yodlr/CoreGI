@@ -13,6 +13,8 @@ ExecStartPre=-/usr/bin/docker rm coregi
 ExecStartPre=/usr/bin/docker pull yodlr/coregi:latest
 ExecStart=/usr/bin/docker run --name coregi \
       -p 3000:3000 \
+      -e ETCD_HOST=${COREOS_PRIVATE_IPV4} \
+      -e FLEET_ENDPOINT='http://${COREOS_PRIVATE_IPV4}:4001' \
       yodlr/coregi:latest
 ExecStop=/usr/bin/docker stop coregi
 
